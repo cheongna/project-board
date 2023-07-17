@@ -32,7 +32,7 @@ public class QArticleComment extends EntityPathBase<ArticleComment> {
     public final DateTimePath<java.time.LocalDateTime> createAt = _super.createAt;
 
     //inherited
-    public final StringPath createBy = _super.createBy;
+    public final StringPath createdBy = _super.createdBy;
 
     public final StringPath hashtag = createString("hashtag");
 

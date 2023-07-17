@@ -18,7 +18,7 @@ import java.util.Objects;
 @Table(indexes = {
         @Index(columnList = "content"),
         @Index(columnList = "createAt"),
-        @Index(columnList = "createBy")
+        @Index(columnList = "createdBy")
 })
 @Entity
 @NoArgsConstructor

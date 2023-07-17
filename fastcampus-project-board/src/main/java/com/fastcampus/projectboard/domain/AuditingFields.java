@@ -25,7 +25,7 @@ public class AuditingFields {
 
     @CreatedBy
     @Column(nullable = false, length = 100, updatable = false)
-    private String createBy; //생성자
+    private String createdBy; //생성자
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @LastModifiedBy

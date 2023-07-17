@@ -21,7 +21,7 @@ import java.util.Set;
         @Index(columnList = "title"),
         @Index(columnList = "hashtag"),
         @Index(columnList = "createAt"),
-        @Index(columnList = "createBy")
+        @Index(columnList = "createdBy")
 })
 @Entity
 @NoArgsConstructor
