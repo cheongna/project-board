@@ -25,7 +25,7 @@ import java.util.Set;
 })
 @Entity
 @NoArgsConstructor
-public class Article {
+public class Article extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,21 +46,6 @@ public class Article {
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
-    @CreatedDate
-    @Column(nullable = false)
-    private LocalDateTime createAt; //생성일시
-
-    @CreatedBy
-    @Column(nullable = false, length = 100)
-    private String createBy; //생성자
-
-    @LastModifiedBy
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt; //수정일시
-
-    @LastModifiedDate
-    @Column(nullable = false, length = 100)
-    private String modifiedBy; //수정자
 
     public Article(String title, String content, String hashtag) {
         this.title = title;
