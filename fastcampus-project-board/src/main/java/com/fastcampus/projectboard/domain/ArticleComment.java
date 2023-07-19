@@ -5,12 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -22,7 +17,7 @@ import java.util.Objects;
 })
 @Entity
 @NoArgsConstructor
-public class ArticleComment extends AuditingFields{
+public class ArticleComment extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,11 +27,17 @@ public class ArticleComment extends AuditingFields{
     private Article article; //제목
 
     @Setter
+    @ManyToOne(optional = false)
+    private UserAccount userAccount;
+
+    @Setter
     @Column(nullable = false, length = 500)
     private String content; //본문
+
     private String hashtag; //해시태그
 
-    public ArticleComment(Article article, String content){
+    public ArticleComment(UserAccount userAccount, Article article, String content) {
+        this.userAccount = userAccount;
         this.article = article;
         this.content = content;
     }
@@ -53,7 +54,7 @@ public class ArticleComment extends AuditingFields{
         return Objects.hash(id);
     }
 
-    public static ArticleComment of(Article article, String content){
-        return new ArticleComment(article, content);
+    public static ArticleComment of(UserAccount userAccount, Article article, String content) {
+        return new ArticleComment(userAccount, article, content);
     }
 }
